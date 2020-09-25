@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import hashConfig from '../../config/auth';
 import User from '../models/User';
@@ -15,7 +14,7 @@ class SessionController {
         .send({ message: 'User not found!', statusCode: 400 });
     }
 
-    if (!await bcrypt.compare(password, user.password)) {
+    if ((password === user.password) === false) {
       return res.status(400)
         .send({ message: 'Incorret password!', statusCode: 400 });
     }

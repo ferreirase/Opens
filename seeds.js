@@ -2,11 +2,13 @@
 /* eslint-disable func-names */
 /* eslint-disable prefer-arrow-callback */
 import seeder from 'mongoose-seed';
-import bcrypt from 'bcryptjs';
+// import bcrypt from 'bcryptjs';
 import path from 'path';
 
 const host = process.env.MONGO_URL || 'localhost';
 const db = `mongodb://${host}/opens`;
+// eslint-disable-next-line no-return-await
+// const hash = async () => await bcrypt.hash('123456', 8);
 
 const data = [{
   model: 'User',
@@ -14,7 +16,8 @@ const data = [{
     {
       _id: '5f6cf6d4048091c70b606af6',
       login: 'admin',
-      password: bcrypt.hashSync('123456', 8),
+      // eslint-disable-next-line no-return-await
+      password: '123456',
       email: 'admin@gmail.com',
       name: 'Admin',
       isAdmin: true,
